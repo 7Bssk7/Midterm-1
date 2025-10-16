@@ -225,10 +225,12 @@ int main() {
 
     // Test 
     int size = MIN_LS;
+    DoublyLinkedList list;
 
     for(int i = 0; i < size; ++i){
-        
+        list.push_back((i+1));
     }
+
 
     
     return 0;
