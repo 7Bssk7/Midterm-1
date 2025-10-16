@@ -207,13 +207,14 @@ public:
         Node* current = head;
 
         if (!current){
-            cout << "List is empty." << endl;
+            cout << "List is empty." << " ";
             return;
         }
         while(current){
             if((i%2) != 0){
                 cout <<current->data << endl;
             }
+            current = current->next;
             ++i;
         } 
 
@@ -221,7 +222,7 @@ public:
 };
 
 int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS << endl;  // dummy statement to avoid compiler warning
 
     // Test 
     int size = MIN_LS;
@@ -230,6 +231,9 @@ int main() {
     for(int i = 0; i < size; ++i){
         list.push_back((i+1));
     }
+
+    cout << "Every other element of the list:" << endl;
+    list.every_other_elemnt();
 
 
     
