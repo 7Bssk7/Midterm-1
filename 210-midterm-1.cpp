@@ -32,13 +32,13 @@ public:
     void insert_after(int value, int position) {
         if (position < 0) {  // This code checks if position is not negative
             cout << "Position must be >= 0." << endl; // If position is negative, outputs and error message 
-            return;
+            return; // This code exits the function without modifying the list 
         }
 
-        Node* newNode = new Node(value);
-        if (!head) {
-            head = tail = newNode;
-            return;
+        Node* newNode = new Node(value);  // allocate a new Node on the heap, set its data inteer ti 'value'
+        if (!head) {    // If list is empty, head == nullptr
+            head = tail = newNode; // new node becomes both head and tail of the list
+            return; // This code exits the function without modifying the list  
         }
 
         Node* temp = head;
@@ -48,7 +48,7 @@ public:
         if (!temp) {
             cout << "Position exceeds list size. Node not inserted.\n";
             delete newNode;
-            return;
+            return; // This code exits the function without modifying the list 
         }
 
         newNode->next = temp->next;
@@ -86,12 +86,12 @@ public:
     void delete_pos(int pos) {
         if (!head) {
             cout << "List is empty." << endl;
-            return;
+            return; // This code exits the function without modifying the list 
         }
     
         if (pos == 1) {
             pop_front();
-            return;
+            return; // This code exits the function without modifying the list 
         }
     
         Node* temp = head;
@@ -99,14 +99,14 @@ public:
         for (int i = 1; i < pos; i++){
             if (!temp) {
                 cout << "Position doesn't exist." << endl;
-                return;
+                return; // This code exits the function without modifying the list 
             }
             else
                 temp = temp->next;
         }
         if (!temp) {
             cout << "Position doesn't exist." << endl;
-            return;
+            return; // This code exits the function without modifying the list 
         }
     
         if (!temp->next) {
@@ -146,7 +146,7 @@ public:
 
         if (!head) {
             cout << "List is empty." << endl;
-            return;
+            return; // This code exits the function without modifying the list 
         }
 
         Node * temp = head;
@@ -157,13 +157,13 @@ public:
         }
         else
             head = tail = nullptr;
-        delete temp;
+        delete temp; // This code exits the function without modifying the list 
     }
 
     void pop_back() {
         if (!tail) {
             cout << "List is empty." << endl;
-            return;
+            return; // This code exits the function without modifying the list 
         }
         Node * temp = tail;
 
@@ -187,7 +187,7 @@ public:
         Node* current = head;
         if (!current) {
             cout << "List is empty." << endl;
-            return;
+            return; // This code exits the function without modifying the list 
         }
         while (current) {
             cout << current->data << " ";
@@ -200,7 +200,7 @@ public:
         Node* current = tail;
         if (!current) { 
             cout << "List is empty." << endl;
-            return;
+            return; // This code exits the function without modifying the list 
         }
         while (current) {
             cout << current->data << " ";
@@ -215,7 +215,7 @@ public:
 
         if (!current){
             cout << "List is empty." << endl;
-            return;
+            return; // This code exits the function without modifying the list 
         }
         while(current){
             if((i%2) != 0){
