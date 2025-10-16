@@ -201,6 +201,10 @@ public:
         }
         cout << endl;
     }
+
+    void every_other_elemnt(){
+        
+    }
 };
 
 int main() {
