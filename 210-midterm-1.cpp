@@ -214,6 +214,7 @@ public:
             if((i%2) != 0){
                 cout <<current->data << endl;
             }
+            ++i;
         } 
 
     }
