@@ -6,12 +6,12 @@ using namespace std;
 //This code assigns constant values. They represent the range of the generated numbers and the size of the list.
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
-//This code defines the DoubleLinkedList class, this class creates and performs various interactions with the list.
+//This code defines the DoublyLinkedList class, this class creates and performs various interactions with the list.
 class DoublyLinkedList {
-private:
-    struct Node {
-        int data;
-        Node* prev;
+private: // This code defines private data members of the class DoublyLinkedList
+    struct Node { // This is a Node structure for the Double linked list (DoublyLinkedList class)
+        int data;  // This variable stores a provided data in each node(integer )
+        Node* prev; // This is a pointer to the previous Node in the list
         Node* next;
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
