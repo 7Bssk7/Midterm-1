@@ -150,61 +150,65 @@ public:
         }
     }
     
-
+    // this method removes node from the front of the list 
     void pop_front() {
 
-        if (!head) {
-            cout << "List is empty." << endl;
+        if (!head) { // checks if list is empty (head == nullptr)
+            cout << "List is empty." << endl; // outputs an error message
             return; // This code exits the function without modifying the list 
         }
 
-        Node * temp = head;
+        Node * temp = head; // this code keep s the pointer to the current head so we can easily delete it 
 
-        if (head->next) {
-            head = head->next;
-            head->prev = nullptr;
+        if (head->next) { // checks if there is more that one node 
+            head = head->next; // changes head to the next node 
+            head->prev = nullptr; // new head's prev must be nullptr, because its now a first node in the list
         }
         else
-            head = tail = nullptr;
-        delete temp; // This code exits the function without modifying the list 
+            head = tail = nullptr; // if list had only one node now list is empty 
+        delete temp; // deallocates the original head node
     }
 
+    // This method removes node from the end of the list
     void pop_back() {
-        if (!tail) {
+        if (!tail) { // checks if the list is empty 
             cout << "List is empty." << endl;
             return; // This code exits the function without modifying the list 
         }
-        Node * temp = tail;
+        Node * temp = tail;  // this code keeps the pointer to the current tail so we can easily delete it 
 
-        if (tail->prev) {
-            tail = tail->prev;
-            tail->next = nullptr;
+        if (tail->prev) { // checks if there is more than one node 
+            tail = tail->prev; // changes tail pointer to the previous node 
+            tail->next = nullptr; // new tail's next is now nullptr
         }
         else
-            head = tail = nullptr;
-        delete temp;
+            head = tail = nullptr; // if list had only one node now list is empty
+        delete temp; // deallocates the original tail node
     }
 
+    // destructor, traverses the list from head and deletes every node(to avoid a memory leak)
     ~DoublyLinkedList() {
-        while (head) {
-            Node* temp = head;
-            head = head->next;
-            delete temp;
+        while (head) {   // this loop checks if list is not empty yet
+            Node* temp = head; // hold current head;
+            head = head->next; // advance to next head 
+            delete temp; // deletes old head
         }
     }
+    // This method prints all items of the list from head to tail
     void print() {
-        Node* current = head;
-        if (!current) {
-            cout << "List is empty." << endl;
+        Node* current = head; // set current node to point at the current head 
+        if (!current) { // checks if list is not empty 
+            cout << "List is empty." << endl; // outputs the error message 
             return; // This code exits the function without modifying the list 
         }
-        while (current) {
-            cout << current->data << " ";
-            current = current->next;
+        while (current) { // // traverse until current becomes nullptr
+            cout << current->data << " "; // print the data of the node
+            current = current->next; // moves to next node
         }
         cout << endl;
     }
 
+    // This method prints all items of the list from tail to head
     void print_reverse() {
         Node* current = tail;
         if (!current) { 
@@ -218,20 +222,21 @@ public:
         cout << endl;
     }
 
+    // The function prints every other element starting with the first.
     void every_other_elemnt(){
-        int i = 1;
-        Node* current = head;
+        int i = 1; 
+        Node* current = head; // start traversal at head
 
-        if (!current){
+        if (!current){ 
             cout << "List is empty." << endl;
             return; // This code exits the function without modifying the list 
         }
-        while(current){
-            if((i%2) != 0){
+        while(current){ // iterate while current points to a node
+            if((i%2) != 0){    // if i is odd, output the data stored in the node 
                 cout <<current->data << " ";
             }
-            current = current->next;
-            ++i;
+            current = current->next; // moves to the next node 
+            ++i; // increment index
         } 
         cout << endl;
 
@@ -250,10 +255,10 @@ int main() {
     }
 
     cout << "Print list: " << endl;
-    list.print();
+    list.print(); // this code outputs every elements of the list
 
     cout << "Every other element of the list:" << endl;
-    list.every_other_elemnt();
+    list.every_other_elemnt(); // this code outputs every-other elements of the list 
 
 
     
