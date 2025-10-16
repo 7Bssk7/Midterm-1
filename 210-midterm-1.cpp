@@ -109,30 +109,31 @@ public:
             else
                 temp = temp->next; // otherwise move one step forward
         }
-        if (!temp) { // this code chgecks if temp is nullptr here, pos is invalid
+        if (!temp) { // this code checks if temp is nullptr here, pos is invalid
             cout << "Position doesn't exist." << endl;
             return; // This code exits the function without modifying the list 
         }
     
-        if (!temp->next) {
-            pop_back();
+        if (!temp->next) {  // if temp->next is nullptr, temp is the last node (tail)
+            pop_back(); // reuse pop_back to remove tail safely
             return;
         }
     
-        Node* tempPrev = temp->prev;
-        tempPrev->next = temp->next;
-        temp->next->prev = tempPrev;
-        delete temp;
+        Node* tempPrev = temp->prev; // store pointer to previous node (must exist since pos != 1)
+        tempPrev->next = temp->next; // bypass temp: prev->next now points to node after temp 
+        temp->next->prev = tempPrev; // sets the node after temp back to prev(maintain the prev node)
+        delete temp; // deletes temp, frees memory to avoid a memory leak
     }
 
+    // This method adds a value to the end of the list 
     void push_back(int v) {
-        Node* newNode = new Node(v);
-        if (!tail)
-            head = tail = newNode;
+        Node* newNode = new Node(v); // this code allocates new node with data v 
+        if (!tail) // checks if list is empty (tail == nullptr)
+            head = tail = newNode; // the ned node is now both head and tail 
         else {
-            tail->next = newNode;
-            newNode->prev = tail;
-            tail = newNode;
+            tail->next = newNode; // otherwise sets the currents's next to newNode 
+            newNode->prev = tail; // sets newNode's prev to the old tail
+            tail = newNode; // update tail pointer to the newNode
         }
     }
     
