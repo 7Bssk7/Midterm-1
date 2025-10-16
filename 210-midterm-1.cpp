@@ -203,7 +203,19 @@ public:
     }
 
     void every_other_elemnt(){
-        
+        int i = 1;
+        Node* current = head;
+
+        if (!current){
+            cout << "List is empty." << endl;
+            return;
+        }
+        while(current){
+            if((i%2) != 0){
+                cout <<current->data << endl;
+            }
+        } 
+
     }
 };
 
