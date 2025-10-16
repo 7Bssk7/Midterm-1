@@ -1,8 +1,11 @@
+//COMSC-210 | Midterm #1 | Arkhip Finski
+// IDE used: Visual Studio
 #include <iostream>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
+//
 class DoublyLinkedList {
 private:
     struct Node {
