@@ -3,9 +3,10 @@
 #include <iostream>
 using namespace std;
 
+//This code assigns constant values. They represent the range of the generated numbers and the size of the list.
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
-//
+//This code defines the DoubleLinkedList class, this class creates and performs various interactions with the list.
 class DoublyLinkedList {
 private:
     struct Node {
