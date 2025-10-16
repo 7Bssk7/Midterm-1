@@ -207,16 +207,17 @@ public:
         Node* current = head;
 
         if (!current){
-            cout << "List is empty." << " ";
+            cout << "List is empty." << endl;
             return;
         }
         while(current){
             if((i%2) != 0){
-                cout <<current->data << endl;
+                cout <<current->data << " ";
             }
             current = current->next;
             ++i;
         } 
+        cout << endl;
 
     }
 };
@@ -231,6 +232,9 @@ int main() {
     for(int i = 0; i < size; ++i){
         list.push_back((i+1));
     }
+
+    cout << "Print list: " << endl;
+    list.print();
 
     cout << "Every other element of the list:" << endl;
     list.every_other_elemnt();
