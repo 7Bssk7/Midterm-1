@@ -223,6 +223,13 @@ public:
 int main() {
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
+    // Test 
+    int size = MIN_LS;
+
+    for(int i = 0; i < size; ++i){
+        
+    }
+
     
     return 0;
 }
