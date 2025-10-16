@@ -24,12 +24,14 @@ private: // This code defines private data members of the class DoublyLinkedList
     Node* tail;
 
 public:
-    // This line of code is a default constructor of double linked list (DoublyLinkedList)
+    // This line of code is a default constructor of double linked list (DoublyLinkedList), sets head and tail pointer to nullptr.
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
+    //  Both head and tail pointer of the double linked list are set to nullptr, list is empty.
 
+    //This method inserts a new Node with a provided value at the provided position in the list.
     void insert_after(int value, int position) {
-        if (position < 0) {
-            cout << "Position must be >= 0." << endl;
+        if (position < 0) {  // This code checks if position is not negative
+            cout << "Position must be >= 0." << endl; // If position is negative, outputs and error message 
             return;
         }
 
