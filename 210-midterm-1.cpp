@@ -84,31 +84,32 @@ public:
         else
             tail = temp->prev; // temp was a tail - update tail to the previous node 
 
-        delete temp;
+        delete temp; // free the memory to avoid a memory leak 
     }
 
+    // delete node located at position pos 
     void delete_pos(int pos) {
-        if (!head) {
-            cout << "List is empty." << endl;
+        if (!head) {  // empty list 
+            cout << "List is empty." << endl; // outpus an error message
             return; // This code exits the function without modifying the list 
         }
     
-        if (pos == 1) {
-            pop_front();
-            return; // This code exits the function without modifying the list 
+        if (pos == 1) { // special case dleetes the first node 
+            pop_front(); // reuse pop-front which handles head/tail updates and deletion 
+            return; // done
         }
     
-        Node* temp = head;
+        Node* temp = head; // this code sets Node temp == head , in order to start traversal at head
     
-        for (int i = 1; i < pos; i++){
-            if (!temp) {
+        for (int i = 1; i < pos; i++){  // iterate from index 1 up to pos-1 to reach the pos-th node
+            if (!temp) { // if temp becomes nullptr before we reach pos, position doesn't exist
                 cout << "Position doesn't exist." << endl;
                 return; // This code exits the function without modifying the list 
             }
             else
-                temp = temp->next;
+                temp = temp->next; // otherwise move one step forward
         }
-        if (!temp) {
+        if (!temp) { // this code chgecks if temp is nullptr here, pos is invalid
             cout << "Position doesn't exist." << endl;
             return; // This code exits the function without modifying the list 
         }
