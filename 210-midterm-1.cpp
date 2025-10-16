@@ -41,15 +41,17 @@ public:
             return; // This code exits the function without modifying the list  
         }
 
-        Node* temp = head;
-        for (int i = 0; i < position && temp; ++i)
-            temp = temp->next;
+        Node* temp = head; // this code sets Node temp == head , in order to start traversal at head
+        for (int i = 0; i < position && temp; ++i) // this loop looks for the position and checks if pointer did not exceed the size of the list
+            temp = temp->next; // moves to the next node with each iteration
 
-        if (!temp) {
-            cout << "Position exceeds list size. Node not inserted.\n";
-            delete newNode;
+        if (!temp) {  // if temp is nullptr, then the provided position is not on the list 
+            cout << "Position exceeds list size. Node not inserted.\n"; // output the error message 
+            delete newNode; // free the previously allocated node to avoid a memory leak 
             return; // This code exits the function without modifying the list 
         }
+
+        // now, if no error message was displayed , that means temp points to the node after which we should insert newNode 
 
         newNode->next = temp->next;
         newNode->prev = temp;
