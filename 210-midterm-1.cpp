@@ -129,7 +129,7 @@ public:
     void push_back(int v) {
         Node* newNode = new Node(v); // this code allocates new node with data v 
         if (!tail) // checks if list is empty (tail == nullptr)
-            head = tail = newNode; // the ned node is now both head and tail 
+            head = tail = newNode; // the new node is now both head and tail 
         else {
             tail->next = newNode; // otherwise sets the currents's next to newNode 
             newNode->prev = tail; // sets newNode's prev to the old tail
@@ -137,17 +137,20 @@ public:
         }
     }
     
-    void push_front(int v) {
-        Node* newNode = new Node(v);
-        if (!head)
-            head = tail = newNode;
+
+    // This method adds a value to the front of the l
+    void push_front(int v) { 
+        Node* newNode = new Node(v); // this code allocates new node with data v 
+        if (!head) // checks if list is empty (head == nullptr)
+            head = tail = newNode; // the ned node is now both head and tail 
         else {
-            newNode->next = head;
-            head->prev = newNode;
-            head = newNode;
+            newNode->next = head; // otherwise sets newNode's next to point at the old head 
+            head->prev = newNode; // old heads prev points to the newNode
+            head = newNode; // updates head to the newNode
         }
     }
     
+
     void pop_front() {
 
         if (!head) {
