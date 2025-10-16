@@ -53,34 +53,36 @@ public:
 
         // now, if no error message was displayed , that means temp points to the node after which we should insert newNode 
 
-        newNode->next = temp->next;
-        newNode->prev = temp;
-        if (temp->next)
-            temp->next->prev = newNode;
-        else
-            tail = newNode;
-        temp->next = newNode;
+        newNode->next = temp->next; // set newNode's next to temp's next 
+        newNode->prev = temp; // set newNode's prev to temp's prev
+        if (temp->next) // checks if temp has next point to something(not a tail)
+            temp->next->prev = newNode;  // updates prev pointer of the node before new inserted node to point at newNode
+        else    // if temp was a tail , newNode becomes new tail of the list
+            tail = newNode; // newNode is now a tail of the list 
+        temp->next = newNode; // changes temp->next to point at the newNode
     }
 
+    // This method deletes node with data == value
     void delete_val(int value) {
-        if (!head) return;
+        if (!head) return;  // This code exits the function without modifying the list, if the list is empty 
 
-        Node* temp = head;
+        Node* temp = head; // this code sets Node temp == head , in order to start traversal at head
         
-        while (temp && temp->data != value)
-            temp = temp->next;
+        while (temp && temp->data != value) // this loop search forward for a node containing 'value
+            temp = temp->next; // this code move to the next node each iteration if node that contains value was not found
 
-        if (!temp) return; 
+        if (!temp) return; // if such a node was not found, exits the function without modifying the list, nothing to delete
 
-        if (temp->prev)
-            temp->prev->next = temp->next;
+        // now  temp points to the node to delete
+        if (temp->prev) // if the node to delete is not the head 
+            temp->prev->next = temp->next; // set the previous node's next to the node after temp
         else
-            head = temp->next; 
+            head = temp->next;  // temp was a head - update head to point at the next node
 
-        if (temp->next)
-            temp->next->prev = temp->prev;
+        if (temp->next) // if the node to delete is not the tail 
+            temp->next->prev = temp->prev; // sets the next node prev to pint at the node before temp
         else
-            tail = temp->prev; 
+            tail = temp->prev; // temp was a tail - update tail to the previous node 
 
         delete temp;
     }
