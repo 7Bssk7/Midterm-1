@@ -12,11 +12,11 @@ private: // This code defines private data members of the class DoublyLinkedList
     struct Node { // This is a Node structure for the Double linked list (DoublyLinkedList class)
         int data;  // This variable stores a provided data in each node(integer )
         Node* prev; // This is a pointer to the previous Node in the list
-        Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val; 
-            prev = p;
-            next = n;
+        Node* next; // This is a pointer to the next Node in the list
+        Node(int val, Node* p = nullptr, Node* n = nullptr) { // This is a constructor for the Node , it includes the node data, a pointer to the next node, and the previous node.
+            data = val;  // This code sets a Node's stored integer to the provided value 
+            prev = p;    // This line of code set previous pointer with the provided pointer p( if pointer is not provided, by default it is set to nullptr)
+            next = n;    // This line of code set next pointer with the provided pointer n( if pointer is not provided, by default it is set to nullptr)
         }
     };
 
@@ -24,6 +24,7 @@ private: // This code defines private data members of the class DoublyLinkedList
     Node* tail;
 
 public:
+    // This line of code is a default constructor of double linked list (DoublyLinkedList)
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
     void insert_after(int value, int position) {
